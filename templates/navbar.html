@@ -1,0 +1,61 @@
+{% load static %}
+<div class="main-menu">
+    <header class="header">
+        <a href="/" class="logo">
+            Dhoran Nepal
+        </a>
+        <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        
+        <!-- /.user -->
+    </header>
+    <!-- /.header -->
+    <div class="content">
+        <div class="navigation">
+            <h5 class="title">Home</h5>
+            <!-- /.title -->
+
+            {% if request.user.is_superuser %}
+            <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'product:product_list' %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Product</span></a>
+                    </li>
+                </ul>
+
+                <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'product:categories_list' %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Categories</span></a>
+                    </li>
+                </ul>
+
+                <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'product:order_list' %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Order</span></a>
+                    </li>
+                </ul>
+                {%else%}
+                <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'accounts:profile' request.user %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Profile</span></a>
+                    </li>
+                </ul>
+                <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'product:product_list' %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>My Product</span></a>
+                    </li>
+                </ul>
+                
+                {% endif %}
+
+                <ul class="menu js__accordion">
+                    <li class="{% if active == 'dashboard' %}current{% endif %}">
+                        <a class="" href="{% url 'accounts:logout' %}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Logout</span></a>
+                    </li>
+                </ul>
+            
+
+        </div>
+        <!-- /.navigation -->
+    </div>
+    <!-- /.content -->
+</div>
+
